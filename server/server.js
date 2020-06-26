@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const app = express();
 
 app.use(express.json());
+
 // Get all Restaurants
 app.get('/api/v1/restaurants', async(req, res) => {
     try {
@@ -56,7 +57,7 @@ app.post('/api/v1/restaurants', async(req, res) => {
     }
 });
 
-// Update Restaurants
+// Update Restaurant
 app.put('/api/v1/restaurants/:id', async(req, res) => {
     try {
         const results = await db.query('UPDATE RESTAURANTS SET name = $1, location = $2, price_range = $3 WHERE id = $4 RETURNING *', 
